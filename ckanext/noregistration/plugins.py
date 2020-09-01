@@ -12,11 +12,20 @@ def no_registering(context, data_dict):
 
 class NoSelfRegistration(p.SingletonPlugin):
     p.implements(p.IAuthFunctions, inherit=True)
+    p.implements(p.IAuthenticator)
     p.implements(p.IConfigurer)
 
     def get_auth_functions(self):
         return {
             'user_create': no_registering
+        }
+    
+    def login(self):
+        return {
+            'success': False,
+            'msg': p.toolkit._(
+                'You cannot login for this site.'
+            )
         }
 
     def update_config(self, config):
