@@ -1,13 +1,16 @@
 {% ckan_extends %}
 
-{% block secondary_content %}
-<section class="module module-narrow module-shallow">
-    <h2 class="module-heading">{{ _('Forgotten your details?') }}</h2>
+
+{% block primary_content %}
+  <section class="module">
     <div class="module-content">
-      <p>{% trans %}No problem, use our password recovery form to reset it.{% endtrans %}</p>
-      <p class="action">
-        <a class="btn" href="{{ h.url_for(controller='user', action='request_reset') }}">{{ _('Forgot your password?') }}</a>
-      </p>
+      <h1 class="page-heading">{% block page_heading %}{{ _('Not allowed to login') }}{% endblock %}</h1>
     </div>
   </section>
+{% endblock %}
+
+
+{% block secondary_content %}
+    <section class="module module-narrow module-shallow">
+    </section>
 {% endblock %}
